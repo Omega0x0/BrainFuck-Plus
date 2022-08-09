@@ -1,13 +1,12 @@
 pub enum Token {
-    CommentLine,            // ';'
     Increment,              // '+'
     Decrement,              // '-'
     MoveLeft,               // '<'
     MoveRight,              // '>'
     Print,                  // '.'
     Input,                  // ','
-    BlockCode(Vec<Token>),  // {...}
-    Loop(Vec<Token>),       // [...]
+    BlockCode(Vec<Token>),  // [...]
+    CreateLoop,             // '@'
     CreateFunction,         // '$'
     CallFunction,           // '*'
     Debug                   // '!'
@@ -24,16 +23,15 @@ impl ToString for Token {
             Token::MoveRight => res.push_str(":MoveRight:"),
             Token::Print => res.push_str(":Print:"),
             Token::Input => res.push_str(":Input:"),
-            Token::BlockCode(tokens) | 
-            Token::Loop(tokens) => {
+            Token::BlockCode(tokens) => {
                 for token in tokens.iter() {
                     res.push_str(token.to_string().as_str())
                 }
             },
+            Token::CreateLoop => res.push_str(":CreateLoop:"),
             Token::CreateFunction => res.push_str(":CreateFunction:"),
             Token::CallFunction => res.push_str(":CallFunction:"),
-            Token::Debug => res.push_str(":Debug:"),
-            _ => {}
+            Token::Debug => res.push_str(":Debug:")
         }
 
         res
