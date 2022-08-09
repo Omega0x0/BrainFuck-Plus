@@ -4,6 +4,8 @@ pub enum Token {
     Decrement,              // '-'
     MoveLeft,               // '<'
     MoveRight,              // '>'
+    Print,                  // '.'
+    Input,                  // ','
     BlockCode(Vec<Token>),  // {...}
     Loop(Vec<Token>),       // [...]
     CreateFunction,         // '$'
