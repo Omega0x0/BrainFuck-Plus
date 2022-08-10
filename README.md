@@ -9,7 +9,6 @@ BFP - can do almost everything that the original BF, BF has several differences 
 3. Its project structure
 4. Interpreter in the Rust programming language
 5. Several new commands (`$, !, @, *, ;`)
-6. Your own plugin for VS Code What can BFP do?What can BFP do?
 
 [Hello world](./examples/hello%20world/)
 
