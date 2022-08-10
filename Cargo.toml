@@ -2,6 +2,7 @@
 name = "brainfuck_plus_interpreter"
 version = "0.0.1"
 edition = "2021"
-aouthors = ["Omega0x0 <OmegaHex@yandex.ru>"]
+authors = ["Omega0x0 <OmegaHex@yandex.ru>"]
 
 [dependencies]
+json = "*"
