@@ -4,6 +4,7 @@ use json::JsonValue;
 
 use crate::{interpreter::Interpreter, analyzer::analyze};
 
+/// A structure that stores basic information about the project.
 pub struct Project {
     name: String,
     version: String,
@@ -12,6 +13,11 @@ pub struct Project {
 }
 
 impl Project {
+    /// Initializes the Project structure by reading all files of the directory.
+    /// # Examples
+    /// ```
+    /// let pjt: Project = Project::init(".../example/");
+    /// ```
     pub fn init(path: String) -> Self {
         let project_file = File::open(format!("{}/{}", path, "project.json"));
 
@@ -41,6 +47,7 @@ impl Project {
         }
     }
 
+    /// Starts all the processes of interpreting the BF+ code and executing it.
     pub fn build(&self) {
         for file in self.files.iter() {
             if file.file_name().unwrap() == "main.bfp" {

@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use crate::token::Token;
 
+/// A structure containing the basic data for the operation of the BF+ program
 pub struct Interpreter {
     pub array_bytes: [u8; 300],
     pub pointer: usize,
@@ -9,6 +10,11 @@ pub struct Interpreter {
 }
 
 impl Interpreter {
+    /// Method of initializing the Interpreter structure.
+    /// # Examples
+    /// ```
+    /// let intr: Interpreter = Interpreter::new();
+    /// ```
     pub fn new() -> Self {
         Self {
             array_bytes: [0; 300],
@@ -16,7 +22,16 @@ impl Interpreter {
             function_stack: HashMap::new()
         }
     }
-
+    /// Accepts a set of tokens/commands as input 
+    /// and executes them sequentially, 
+    /// working with the main structure (Interpreter)
+    /// # Examples
+    /// ```
+    /// let tokens: Vec<Token> = analyze("+!".to_string());
+    /// let mut intr: Interpreter = Interpreter::new();
+    /// 
+    /// intr.run(&tokens);
+    /// ```
     pub fn run(&mut self, tokens: &Vec<Token>) {
         let mut i = 0;
         while i < tokens.len() {

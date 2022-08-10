@@ -1,3 +1,4 @@
+/// Enumeration of tokens for creating an abstraction and subsequent matching with a template.
 #[derive(Clone)]
 pub enum Token {
     Increment,              // '+'

@@ -1,5 +1,12 @@
 use crate::token::Token;
 
+/// Takes the program code BF+ as an argument and returns a set of tokens or commands.
+/// 
+/// # Examples
+/// ```
+/// let tokens: Vec<Token> = analyze("+!".to_string());
+///
+/// ```
 pub fn analyze(code: String) -> Vec<Token> {
     let mut is_comment = false;
     let mut block_stack: i16 = 0;
