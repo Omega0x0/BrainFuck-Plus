@@ -7,7 +7,11 @@ pub fn analyze(code: String) -> Vec<Token> {
     let mut tokens: Vec<Token> = vec![];
 
     for ch in code.chars() {
-        if is_comment { continue; }
+        if is_comment {
+            if ch == '\n' { is_comment = false; }
+            
+            continue; 
+        }
 
         if block_stack != 0 {
             if ch == '[' { block_stack += 1; }
