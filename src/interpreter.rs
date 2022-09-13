@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, io::Write};
 
 use crate::token::Token;
 
@@ -41,7 +41,14 @@ impl Interpreter {
                 Token::MoveLeft => self.pointer -= 1,
                 Token::MoveRight => self.pointer += 1,
                 Token::Print => print!("{}", self.array_bytes[self.pointer] as char),
-                Token::Input => {},
+                Token::Input => {
+                    std::io::stdout().flush().unwrap();
+
+                    let mut ch = String::new();
+                    std::io::stdin().read_line(&mut ch).unwrap();
+
+                    self.array_bytes[self.pointer] = ch.chars().next().unwrap() as u8;
+                },
                 Token::BlockCode(tokens) => self.run(tokens),
 
                 Token::CreateLoop => {
